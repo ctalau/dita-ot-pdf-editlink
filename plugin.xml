@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="com.oxygenxml.pdf.editlink">
+  <feature extension="package.support.name" value="Oxygen XML Editor Support"/>
+  <feature extension="package.support.email" value="support@oxygenxml.com"/>
+  <feature extension="package.version" value="18.0"/>
+  <feature extension="dita.xsl.xslfo" value="custom.xsl" type="file"/>
+</plugin>
