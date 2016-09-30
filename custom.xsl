@@ -68,7 +68,7 @@
                                 </fo:block>
                             </fo:table-cell>
                             <fo:table-cell width="80pt">
-                                <fo:block width="80pt">
+                                <fo:block start-indent="0px" width="80pt">
                                     <fo:basic-link
                                         text-align="right"
                                         white-space="nowrap"
