@@ -75,6 +75,7 @@
                                         text-decoration="underline" 
                                         color="navy"
                                         font-size="8pt"
+                                        font-weight="normal"
                                         width="80pt"
                                         font-style="normal">
                                         <xsl:attribute name="external-destination"><xsl:value-of select="system-property('webapp.url')"/>app/oxygen.html?url=<xsl:value-of select="$file.url.encoded"/><xsl:text disable-output-escaping="yes">&amp;</xsl:text>ditamap=<xsl:value-of select="$ditamap.url.encoded"/></xsl:attribute>
