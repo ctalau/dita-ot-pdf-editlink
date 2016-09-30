@@ -26,27 +26,7 @@
                     <xsl:with-param name="attrSet" select="$attrSet2"/>
                     <xsl:with-param name="path" select="'../../cfg/fo/attrs/commons-attr.xsl'"/>
                 </xsl:call-template>
-                <xsl:if test="$level = 1">
-                    <fo:marker marker-class-name="current-header">
-                        <xsl:apply-templates select="." mode="getTitle"/>
-                    </fo:marker>
-                </xsl:if>
-                <xsl:if test="$level = 2">
-                    <fo:marker marker-class-name="current-h2">
-                        <xsl:apply-templates select="." mode="getTitle"/>
-                    </fo:marker>
-                </xsl:if>
-                <fo:inline id="{parent::node()/@id}"/>
-                <fo:inline>
-                    <xsl:attribute name="id">
-                        <xsl:call-template name="generate-toc-id">
-                            <xsl:with-param name="element" select=".."/>
-                        </xsl:call-template>
-                    </xsl:attribute>
-                </fo:inline>
-                <xsl:call-template name="pullPrologIndexTerms"/>
-
-                <!-- override start -->
+                
                 <!-- Compute the URL params for the edit url -->
                 <xsl:variable name="file.path">
                   <xsl:value-of select="substring(@xtrf, 7 + string-length(system-property('cwd')))"/>
@@ -62,7 +42,30 @@
                     <fo:table-body>
                         <fo:table-row>
                             <fo:table-cell>
-                                <fo:block><xsl:apply-templates select="." mode="getTitle"/></fo:block>
+                                <fo:block>
+                                    <!-- This content was already here before. I just wrapped it in a table. -->
+                                    <xsl:if test="$level = 1">
+                                        <fo:marker marker-class-name="current-header">
+                                            <xsl:apply-templates select="." mode="getTitle"/>
+                                        </fo:marker>
+                                    </xsl:if>
+                                    <xsl:if test="$level = 2">
+                                        <fo:marker marker-class-name="current-h2">
+                                            <xsl:apply-templates select="." mode="getTitle"/>
+                                        </fo:marker>
+                                    </xsl:if>
+                                    <fo:inline id="{parent::node()/@id}"/>
+                                    <fo:inline>
+                                        <xsl:attribute name="id">
+                                            <xsl:call-template name="generate-toc-id">
+                                                <xsl:with-param name="element" select=".."/>
+                                            </xsl:call-template>
+                                        </xsl:attribute>
+                                    </fo:inline>
+                                    <xsl:call-template name="pullPrologIndexTerms"/>
+                                    <xsl:apply-templates select="." mode="getTitle"/>
+                                    <!-- End of existing content -->
+                                </fo:block>
                             </fo:table-cell>
                             <fo:table-cell width="80pt">
                                 <fo:block width="80pt">
@@ -84,6 +87,5 @@
                 </fo:table>
             </fo:block>
         </fo:block>
-        <!-- override end --> 
     </xsl:template>
 </xsl:stylesheet>
